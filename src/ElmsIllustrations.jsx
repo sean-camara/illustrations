@@ -580,6 +580,9 @@ export default function ElmsIllustrations() {
             </motion.div>
           ) : null}
         </AnimatePresence>
+        <footer className="mt-6 flex justify-center text-xs text-neutral-400">
+          Created by Sean John Camara
+        </footer>
       </div>
     </div>
   );
