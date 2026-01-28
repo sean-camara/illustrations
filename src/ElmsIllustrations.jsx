@@ -536,12 +536,8 @@ export default function ElmsIllustrations() {
             </div>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
             <Tabs tab={tab} setTab={setTab} />
-            <div className="flex flex-wrap gap-2">
-              <Pill active={selection !== null}>Selected</Pill>
-              <Pill>Dark</Pill>
-            </div>
           </div>
         </motion.header>
 
