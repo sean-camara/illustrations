@@ -157,57 +157,69 @@ function IpoScene({ animateFlow, selection, setSelection, playPulse }) {
   // Mobile: vertical flow. Desktop: horizontal flow with storage under process.
   return (
     <Card title="1) Input-Process-Output Model" subtitle="Data -> Work -> Information">
-      <div className="grid gap-4">
-        {/* Desktop layout */}
-        <div className="hidden md:block">
-          <div className="flex items-center gap-3">
-            <div className="w-56">
-              <motion.div variants={pop} initial="hidden" animate="show">
-                <Node
-                  title="INPUT"
-                  badge="Data"
-                  desc="Numbers, text, images, sounds"
-                  active={is("IPO:INPUT")}
-                  onClick={() => setSelection("IPO:INPUT")}
-                  tooltip="Raw data enters the system"
-                />
-              </motion.div>
-            </div>
+      <div className="mx-auto w-full max-w-4xl">
+        <div className="grid gap-6">
+          {/* Desktop layout */}
+          <div className="hidden md:grid grid-cols-[minmax(0,14rem)_auto_minmax(0,14rem)_auto_minmax(0,14rem)] items-center justify-center gap-x-4 gap-y-6">
+            <motion.div
+              variants={pop}
+              initial="hidden"
+              animate="show"
+              className="w-full max-w-xs justify-self-center"
+            >
+              <Node
+                title="INPUT"
+                badge="Data"
+                desc="Numbers, text, images, sounds"
+                active={is("IPO:INPUT")}
+                onClick={() => setSelection("IPO:INPUT")}
+                tooltip="Raw data enters the system"
+              />
+            </motion.div>
             <Arrow animated={animateFlow || playPulse} />
-            <div className="w-56">
-              <motion.div variants={pop} initial="hidden" animate="show" transition={{ delay: 0.06 }}>
-                <Node
-                  title="PROCESS"
-                  badge="Compute"
-                  desc="Executes instructions to transform data"
-                  active={is("IPO:PROCESS")}
-                  onClick={() => setSelection("IPO:PROCESS")}
-                  tooltip="The system performs operations here"
-                />
-              </motion.div>
-            </div>
+            <motion.div
+              variants={pop}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.06 }}
+              className="w-full max-w-xs justify-self-center"
+            >
+              <Node
+                title="PROCESS"
+                badge="Compute"
+                desc="Executes instructions to transform data"
+                active={is("IPO:PROCESS")}
+                onClick={() => setSelection("IPO:PROCESS")}
+                tooltip="The system performs operations here"
+              />
+            </motion.div>
             <Arrow animated={animateFlow || playPulse} />
-            <div className="w-56">
-              <motion.div variants={pop} initial="hidden" animate="show" transition={{ delay: 0.12 }}>
-                <Node
-                  title="OUTPUT"
-                  badge="Info"
-                  desc="Result presented to the user"
-                  active={is("IPO:OUTPUT")}
-                  onClick={() => setSelection("IPO:OUTPUT")}
-                  tooltip="Information becomes accessible"
-                />
-              </motion.div>
-            </div>
-          </div>
+            <motion.div
+              variants={pop}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.12 }}
+              className="w-full max-w-xs justify-self-center"
+            >
+              <Node
+                title="OUTPUT"
+                badge="Info"
+                desc="Result presented to the user"
+                active={is("IPO:OUTPUT")}
+                onClick={() => setSelection("IPO:OUTPUT")}
+                tooltip="Information becomes accessible"
+              />
+            </motion.div>
 
-          <div className="mt-3 flex items-start gap-3">
-            <div className="w-56" />
-            <div className="w-10" />
-            <div className="w-56 flex flex-col items-center">
+            <div className="col-start-3 col-end-4 flex flex-col items-center gap-2">
               <DownArrow animated={animateFlow || playPulse} />
-              <div className="w-full">
-                <motion.div variants={pop} initial="hidden" animate="show" transition={{ delay: 0.18 }}>
+              <div className="w-full max-w-xs">
+                <motion.div
+                  variants={pop}
+                  initial="hidden"
+                  animate="show"
+                  transition={{ delay: 0.18 }}
+                >
                   <Node
                     title="STORAGE"
                     badge="Store"
@@ -218,62 +230,80 @@ function IpoScene({ animateFlow, selection, setSelection, playPulse }) {
                   />
                 </motion.div>
               </div>
-              <div className="mt-2 w-full text-xs text-neutral-400">-> feeds back to Process</div>
+              <div className="w-full text-center text-xs text-neutral-400">-> feeds back to Process</div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile layout */}
-        <div className="md:hidden grid gap-3">
-          <motion.div variants={pop} initial="hidden" animate="show">
-            <Node
-              title="INPUT"
-              badge="Data"
-              desc="Numbers, text, images, sounds"
-              active={is("IPO:INPUT")}
-              onClick={() => setSelection("IPO:INPUT")}
-              tooltip="Raw data enters the system"
-            />
-          </motion.div>
-          <div className="flex justify-center">
-            <DownArrow animated={animateFlow || playPulse} />
+          {/* Mobile layout */}
+          <div className="md:hidden grid gap-4">
+            <motion.div variants={pop} initial="hidden" animate="show" className="mx-auto w-full max-w-sm">
+              <Node
+                title="INPUT"
+                badge="Data"
+                desc="Numbers, text, images, sounds"
+                active={is("IPO:INPUT")}
+                onClick={() => setSelection("IPO:INPUT")}
+                tooltip="Raw data enters the system"
+              />
+            </motion.div>
+            <div className="flex justify-center">
+              <DownArrow animated={animateFlow || playPulse} />
+            </div>
+            <motion.div
+              variants={pop}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.06 }}
+              className="mx-auto w-full max-w-sm"
+            >
+              <Node
+                title="PROCESS"
+                badge="Compute"
+                desc="Transforms data by instructions"
+                active={is("IPO:PROCESS")}
+                onClick={() => setSelection("IPO:PROCESS")}
+                tooltip="Operations happen here"
+              />
+            </motion.div>
+            <div className="flex justify-center">
+              <DownArrow animated={animateFlow || playPulse} />
+            </div>
+            <motion.div
+              variants={pop}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.12 }}
+              className="mx-auto w-full max-w-sm"
+            >
+              <Node
+                title="STORAGE"
+                badge="Store"
+                desc="Keeps data for later"
+                active={is("IPO:STORAGE")}
+                onClick={() => setSelection("IPO:STORAGE")}
+                tooltip="Temporary or permanent keeping"
+              />
+            </motion.div>
+            <div className="flex justify-center">
+              <DownArrow animated={animateFlow || playPulse} />
+            </div>
+            <motion.div
+              variants={pop}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.18 }}
+              className="mx-auto w-full max-w-sm"
+            >
+              <Node
+                title="OUTPUT"
+                badge="Info"
+                desc="Result presented to the user"
+                active={is("IPO:OUTPUT")}
+                onClick={() => setSelection("IPO:OUTPUT")}
+                tooltip="Information becomes accessible"
+              />
+            </motion.div>
           </div>
-          <motion.div variants={pop} initial="hidden" animate="show" transition={{ delay: 0.06 }}>
-            <Node
-              title="PROCESS"
-              badge="Compute"
-              desc="Transforms data by instructions"
-              active={is("IPO:PROCESS")}
-              onClick={() => setSelection("IPO:PROCESS")}
-              tooltip="Operations happen here"
-            />
-          </motion.div>
-          <div className="flex justify-center">
-            <DownArrow animated={animateFlow || playPulse} />
-          </div>
-          <motion.div variants={pop} initial="hidden" animate="show" transition={{ delay: 0.12 }}>
-            <Node
-              title="STORAGE"
-              badge="Store"
-              desc="Keeps data for later"
-              active={is("IPO:STORAGE")}
-              onClick={() => setSelection("IPO:STORAGE")}
-              tooltip="Temporary or permanent keeping"
-            />
-          </motion.div>
-          <div className="flex justify-center">
-            <DownArrow animated={animateFlow || playPulse} />
-          </div>
-          <motion.div variants={pop} initial="hidden" animate="show" transition={{ delay: 0.18 }}>
-            <Node
-              title="OUTPUT"
-              badge="Info"
-              desc="Result presented to the user"
-              active={is("IPO:OUTPUT")}
-              onClick={() => setSelection("IPO:OUTPUT")}
-              tooltip="Information becomes accessible"
-            />
-          </motion.div>
         </div>
       </div>
     </Card>
@@ -285,55 +315,74 @@ function ElementsScene({ selection, setSelection }) {
 
   return (
     <Card title="2) Elements of a Computer System" subtitle="Core parts working together">
-      <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <motion.div variants={fade} initial="hidden" animate="show" className="lg:col-span-3">
-          <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-            <div className="text-sm font-extrabold text-white">COMPUTER SYSTEM</div>
+      <div className="mx-auto w-full max-w-4xl grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          variants={fade}
+          initial="hidden"
+          animate="show"
+          className="lg:col-span-3 flex justify-center"
+        >
+          <div className="w-full rounded-3xl border border-white/10 bg-black/20 p-4">
+            <div className="text-sm font-extrabold text-white text-center">COMPUTER SYSTEM</div>
           </div>
         </motion.div>
 
-        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.03 }}>
-          <Node
-            title="DATA"
-            badge="Facts"
-            desc="Numbers, text, images, sounds"
-            active={is("E:DATA")}
-            onClick={() => setSelection("E:DATA")}
-            tooltip="Fundamental representations of facts"
-          />
+        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.03 }} className="flex">
+          <div className="w-full max-w-sm mx-auto">
+            <Node
+              title="DATA"
+              badge="Facts"
+              desc="Numbers, text, images, sounds"
+              active={is("E:DATA")}
+              onClick={() => setSelection("E:DATA")}
+              tooltip="Fundamental representations of facts"
+            />
+          </div>
         </motion.div>
 
-        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.06 }}>
-          <Node
-            title="SOFTWARE"
-            badge="Instructions"
-            desc="System + application programs"
-            active={is("E:SOFT")}
-            onClick={() => setSelection("E:SOFT")}
-            tooltip="Defines instructions executed by hardware"
-          />
+        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.06 }} className="flex">
+          <div className="w-full max-w-sm mx-auto">
+            <Node
+              title="SOFTWARE"
+              badge="Instructions"
+              desc="System + application programs"
+              active={is("E:SOFT")}
+              onClick={() => setSelection("E:SOFT")}
+              tooltip="Defines instructions executed by hardware"
+            />
+          </div>
         </motion.div>
 
-        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.09 }}>
-          <Node
-            title="HARDWARE"
-            badge="Devices"
-            desc="Executes, stores, moves data"
-            active={is("E:HARD")}
-            onClick={() => setSelection("E:HARD")}
-            tooltip="Physical parts of the system"
-          />
+        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.09 }} className="flex">
+          <div className="w-full max-w-sm mx-auto">
+            <Node
+              title="HARDWARE"
+              badge="Devices"
+              desc="Executes, stores, moves data"
+              active={is("E:HARD")}
+              onClick={() => setSelection("E:HARD")}
+              tooltip="Physical parts of the system"
+            />
+          </div>
         </motion.div>
 
-        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.12 }} className="sm:col-span-2 lg:col-span-3">
-          <Node
-            title="COMMUNICATION"
-            badge="Connect"
-            desc="Transfers programs + data between systems"
-            active={is("E:COMM")}
-            onClick={() => setSelection("E:COMM")}
-            tooltip="Channels can be wired or wireless"
-          />
+        <motion.div
+          variants={fade}
+          initial="hidden"
+          animate="show"
+          transition={{ delay: 0.12 }}
+          className="sm:col-span-2 lg:col-span-3 flex justify-center"
+        >
+          <div className="w-full max-w-2xl">
+            <Node
+              title="COMMUNICATION"
+              badge="Connect"
+              desc="Transfers programs + data between systems"
+              active={is("E:COMM")}
+              onClick={() => setSelection("E:COMM")}
+              tooltip="Channels can be wired or wireless"
+            />
+          </div>
         </motion.div>
       </div>
     </Card>
@@ -364,7 +413,7 @@ function HardwareScene({ selection, setSelection }) {
 
   return (
     <Card title="3) Hardware Components" subtitle="Physical components grouped by role">
-      <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
+      <div className="mx-auto w-full max-w-4xl grid gap-3 sm:gap-4 sm:grid-cols-2">
         {groups.map((g, idx) => (
           <motion.div
             key={g.key}
@@ -414,18 +463,20 @@ function SoftwareScene({ selection, setSelection, animateFlow, playPulse }) {
 
   return (
     <Card title="4) Software Components" subtitle="Apps vs system software">
-      <div className="grid gap-4">
-        <motion.div variants={fade} initial="hidden" animate="show">
-          <Node
-            title="APPLICATION SOFTWARE"
-            badge="Apps"
-            desc="User-focused programs"
-            active={is("S:APP")}
-            onClick={() => setSelection("S:APP")}
-            tooltip="Example: web browser"
-          />
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Pill>Web Browser (Google Chrome)</Pill>
+      <div className="mx-auto w-full max-w-4xl grid gap-6">
+        <motion.div variants={fade} initial="hidden" animate="show" className="flex">
+          <div className="w-full max-w-xl mx-auto">
+            <Node
+              title="APPLICATION SOFTWARE"
+              badge="Apps"
+              desc="User-focused programs"
+              active={is("S:APP")}
+              onClick={() => setSelection("S:APP")}
+              tooltip="Example: web browser"
+            />
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              <Pill>Web Browser (Google Chrome)</Pill>
+            </div>
           </div>
         </motion.div>
 
@@ -433,29 +484,31 @@ function SoftwareScene({ selection, setSelection, animateFlow, playPulse }) {
           <DownArrow animated={animateFlow || playPulse} />
         </div>
 
-        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.05 }}>
-          <Node
-            title="SYSTEM SOFTWARE"
-            badge="OS"
-            desc="Provides services and core functions"
-            active={is("S:SYS")}
-            onClick={() => setSelection("S:SYS")}
-            tooltip="Operating system + core parts"
-          />
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Pill>Operating System (Windows 10)</Pill>
-            <Pill>API</Pill>
-            <Pill>Kernel</Pill>
-          </div>
-
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="text-xs font-bold text-white/90">API</div>
-              <div className="mt-1 text-xs text-neutral-300">Interface used by apps to access OS services</div>
+        <motion.div variants={fade} initial="hidden" animate="show" transition={{ delay: 0.05 }} className="flex">
+          <div className="w-full max-w-xl mx-auto">
+            <Node
+              title="SYSTEM SOFTWARE"
+              badge="OS"
+              desc="Provides services and core functions"
+              active={is("S:SYS")}
+              onClick={() => setSelection("S:SYS")}
+              tooltip="Operating system + core parts"
+            />
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              <Pill>Operating System (Windows 10)</Pill>
+              <Pill>API</Pill>
+              <Pill>Kernel</Pill>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="text-xs font-bold text-white/90">Kernel</div>
-              <div className="mt-1 text-xs text-neutral-300">Most important OS processing functions</div>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 w-full max-w-3xl mx-auto">
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="text-xs font-bold text-white/90">API</div>
+                <div className="mt-1 text-xs text-neutral-300">Interface used by apps to access OS services</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="text-xs font-bold text-white/90">Kernel</div>
+                <div className="mt-1 text-xs text-neutral-300">Most important OS processing functions</div>
+              </div>
             </div>
           </div>
         </motion.div>
